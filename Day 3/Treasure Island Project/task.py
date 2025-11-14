@@ -1,3 +1,5 @@
+import sys
+
 print(r'''
 *******************************************************************************
           |                   |                  |                     |
@@ -22,3 +24,28 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 ''')
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
+
+game_over = "\nGame over."
+left_or_right = input("Where do you want to go? left/right: ")
+
+if not left_or_right == "left":
+  sys.exit("You fell into a hole!" + game_over)
+
+swim_or_wait = input("You found a river! what will you do? swim/wait: ")
+
+if not swim_or_wait == "wait":
+  sys.exit("You were attacked by a trout!" + game_over)
+
+door = input("you see 3 doors. witch one will you chose? red/yellow/blue: ")
+
+if door == "red":
+  sys.exit("You were burned by fire!" + game_over)
+elif door == "yellow":
+  print("You found the treasure!\nYou win!")
+elif door == "blue":
+  sys.exit("You were eaten by beasts!" + game_over)
+else:
+  sys.exit(game_over)
+
+
+
