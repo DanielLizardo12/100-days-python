@@ -1,4 +1,4 @@
-from random import randint
+import random
+
 dice_images = ["❶", "❷", "❸", "❹", "❺", "❻"]
-dice_num = randint(1, 6)
-print(dice_images[dice_num])
+print(random.choice(dice_images))
