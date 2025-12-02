@@ -5,7 +5,7 @@ from game_data import data
 current_winner = random.choice(data)
 
 def print_pick_desc(pick):
-    return f"{pick["name"]} a {pick["description"]}, from {pick["country"]} {pick["follower_count"]}"
+    return f"{pick["name"]} a {pick["description"]}, from {pick["country"]}"
 
 score = 0
 while True:
