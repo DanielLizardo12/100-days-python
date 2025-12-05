@@ -18,6 +18,18 @@ files:
   - name: Day 17/main.py
     visible: true
     learner_created: true
+  - name: Day 17/quizz game/data.py
+    visible: true
+    learner_created: true
+  - name: Day 17/quizz game/main.py
+    visible: true
+    learner_created: true
+  - name: Day 17/quizz game/question_model.py
+    visible: true
+    learner_created: true
+  - name: Day 17/quizz game/quizz_brain.py
+    visible: true
+    learner_created: true
 status: Solved
 record: -1
 post_submission_on_open: true
