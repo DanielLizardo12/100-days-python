@@ -42,6 +42,13 @@ files:
   - name: Day 18/spirograph.py
     visible: true
     learner_created: true
+  - name: Day 18/hirst painting/main.py
+    visible: true
+    learner_created: true
+  - name: Day 18/hirst painting/image.jpg
+    visible: true
+    is_binary: true
+    learner_created: true
 status: Solved
 record: -1
 post_submission_on_open: true
