@@ -1,13 +1,18 @@
 from turtle import Turtle, Screen
+import heroes
 
 timmy = Turtle()
 timmy.shape("turtle")
 timmy.color("DarkSeaGreen")
 
-for _ in range(4):
-    timmy.forward(100)
-    timmy.right(90)
+for number in range(50):
+    if number % 2 == 0:
+        timmy.pendown()
+    timmy.forward(10)
+    timmy.penup()
+
 
 screen = Screen()
 screen.exitonclick()
 
+print(heroes.gen())
