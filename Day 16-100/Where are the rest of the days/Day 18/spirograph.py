@@ -1,21 +1,21 @@
+import turtle
 from turtle import Turtle, Screen
 import random
 
-directions = [90, 180, 270, 0]
-
 def random_rgb():
-    return random.randint(1, 255)
+    return random.randint(0, 255)
 
 screen = Screen()
 screen.colormode(255)
 timmy = Turtle()
-timmy.pensize(15)
-timmy.speed(5)
+timmy.speed(0)
+timmy.shape("circle")
 
-for _ in range(1000):
+
+for number in range(360):
     timmy.color((random_rgb(), random_rgb(), random_rgb()))
-    timmy.forward(30)
-    timmy.setheading(random.choice(directions))
+    timmy.circle(200)
+    timmy.setheading(number)
 
 
 
