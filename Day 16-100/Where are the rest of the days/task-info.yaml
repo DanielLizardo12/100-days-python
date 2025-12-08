@@ -33,7 +33,10 @@ files:
   - name: Day 18/mian.py
     visible: true
     learner_created: true
-  - name: Day 18/turtleDraw.py
+  - name: Day 18/turtle_draw.py
+    visible: true
+    learner_created: true
+  - name: Day 18/random_walk.py
     visible: true
     learner_created: true
 status: Solved

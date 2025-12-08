@@ -10,7 +10,7 @@ timmy = Turtle()
 timmy.shape("turtle")
 timmy.color("DarkSeaGreen")
 
-for number in range(4, 10):
+for number in range(3, 10):
     timmy.pencolor((random_rgb(), random_rgb(), random_rgb()))
     for _ in range(number):
         timmy.forward(100)
