@@ -1,4 +1,3 @@
-import turtle
 from turtle import Turtle, Screen
 import random
 
@@ -11,12 +10,10 @@ timmy = Turtle()
 timmy.speed(0)
 timmy.shape("circle")
 
-
-for number in range(360):
+number = 0.0
+while number < 360:
     timmy.color((random_rgb(), random_rgb(), random_rgb()))
     timmy.circle(200)
     timmy.setheading(number)
-
-
-
+    number += 0.1
 screen.exitonclick()
