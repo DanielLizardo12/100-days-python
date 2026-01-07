@@ -10,6 +10,10 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 car_manager = CarManager()
 scoreboard = Scoreboard()
+player = Player()
+
+screen.listen()
+screen.onkey(player.move, "w")
 
 game_is_on = True
 while game_is_on:
