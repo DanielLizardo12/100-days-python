@@ -6,23 +6,41 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+WORK_MIN = 2
+SHORT_BREAK_MIN = 1
+LONG_BREAK_MIN = 5
+reps = 0
+work_rep_list = [1,3,5,7]
+short_break_list = [2,4,6]
 
 def start_timer():
-    count_down(5 * 60)
+    global reps
+    reps += 1
+    print(reps)
+
+    if reps in work_rep_list:
+        title_label.config(text="Work", fg=GREEN)
+        count_down(WORK_MIN)
+    elif reps in short_break_list:
+        title_label.config(text="short Work", fg=PINK)
+        count_down(SHORT_BREAK_MIN)
+    elif reps == 8:
+        title_label.config(text="long Work", fg=RED)
+        count_down(LONG_BREAK_MIN)
 
 def count_down(count):
     count_min = math.floor(count / 60)
     count_sec = count % 60
-    
+
     if count_sec < 10:
         count_sec = f"0{count_sec}"
+
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
 
 window = tkinter.Tk()
 window.title("Pomodoro")
