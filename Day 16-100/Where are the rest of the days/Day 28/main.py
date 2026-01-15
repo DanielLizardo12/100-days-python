@@ -12,6 +12,15 @@ LONG_BREAK_MIN = 5
 reps = 0
 work_rep_list = [1,3,5,7]
 short_break_list = [2,4,6]
+timer = None
+
+def reset_timer():
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_text, text="00:00")
+    title_label.config(text="Timer", fg=GREEN)
+    check_label.config(text="")
+    global reps
+    reps = 0
 
 def start_timer():
     global reps
@@ -38,9 +47,15 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        marks = ""
+        for _ in range(math.floor(reps/2)):
+            marks += "✔"
+        check_label.config(text=marks)
+
 
 window = tkinter.Tk()
 window.title("Pomodoro")
@@ -58,10 +73,10 @@ title_label.grid(column=1, row=0)
 start_button = tkinter.Button(text="Start", font=(FONT_NAME, 15, "bold"), command=start_timer)
 start_button.grid(column=0, row=2)
 
-reset_button = tkinter.Button(text="Reset", font=(FONT_NAME, 15, "bold"))
+reset_button = tkinter.Button(text="Reset", font=(FONT_NAME, 15, "bold"), command=reset_timer)
 reset_button.grid(column=2, row=2)
 
-check_label = tkinter.Label(text="✔", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 25, "bold"))
+check_label = tkinter.Label(fg=GREEN, bg=YELLOW, font=(FONT_NAME, 25, "bold"))
 check_label.grid(column=1, row=2)
 
 
