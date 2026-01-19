@@ -1,6 +1,7 @@
 import json
 import os
 import tkinter
+from tkinter import messagebox
 
 FONT_NAME = "Courier"
 FILE_NAME = "passwords.txt"
@@ -10,20 +11,33 @@ if os.path.exists(FILE_NAME):
     with open(FILE_NAME, "r") as file:
         data = json.load(file)
 
-
 def store_data():
-    data.append({
-        "website": website_entry.get(),
-        "email": email_entry.get(),
-        "password": password_entry.get(),
-    })
-    with open(FILE_NAME, "w") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+    website = website_entry.get()
+    email = email_entry.get()
+    password = password_entry.get()
 
-    website_entry.delete(0, tkinter.END)
-    email_entry.delete(0, tkinter.END)
-    email_entry.insert(0, "email@gmail.com")
-    password_entry.delete(0, tkinter.END)
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showerror(title="Error", message="Please enter all required information")
+    else:
+        data.append({
+            "website": website,
+            "email": email,
+            "password": password,
+        })
+
+        is_ok = messagebox.askokcancel(title=data[-1]["website"], message=f"data stored: \n\nwebsite: {data[-1]["website"]} "
+                                                                          f"\nemail: {data[-1]["email"]} "
+                                                                          f"\npassword: {data[-1]["password"]} "
+                                                                          f"\n\nis this ok to save?")
+
+        if is_ok:
+            with open(FILE_NAME, "w") as f:
+                json.dump(data, f, indent=4, ensure_ascii=False)
+
+            website_entry.delete(0, tkinter.END)
+            email_entry.delete(0, tkinter.END)
+            email_entry.insert(0, "email@gmail.com")
+            password_entry.delete(0, tkinter.END)
 
 
 window = tkinter.Tk()
