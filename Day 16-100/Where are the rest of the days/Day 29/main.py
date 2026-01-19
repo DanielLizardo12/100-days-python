@@ -1,15 +1,37 @@
 import json
 import os
+import random
+import string
 import tkinter
 from tkinter import messagebox
 
 FONT_NAME = "Courier"
 FILE_NAME = "passwords.txt"
 
+window = tkinter.Tk()
+window.title("Password Manager")
+window.config(padx=20, pady=20)
+
+
 data = []
 if os.path.exists(FILE_NAME):
     with open(FILE_NAME, "r") as file:
         data = json.load(file)
+
+def generate_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+def fill_and_copy_password():
+    password = generate_password()
+    password_entry.delete(0, tkinter.END)
+    password_entry.insert(0, password)
+
+    window.clipboard_clear()
+    window.clipboard_append(password)
+    window.update()
+
 
 def store_data():
     website = website_entry.get()
@@ -40,9 +62,6 @@ def store_data():
             password_entry.delete(0, tkinter.END)
 
 
-window = tkinter.Tk()
-window.title("Password Manager")
-window.config(padx=20, pady=20)
 
 canvas = tkinter.Canvas(width=500, height=500)
 lock_img = tkinter.PhotoImage(file="lock.png")
@@ -72,7 +91,7 @@ email_entry.insert(0, "email@gmail.com")
 password_entry = tkinter.Entry(width=33, font=("Arial", 20, "bold"))
 password_entry.grid(column=1, row=4, sticky=tkinter.W, pady=10)
 
-gen_pass_button = tkinter.Button(text="Generate Password", width=20, font=("Arial", 14, "bold"))
+gen_pass_button = tkinter.Button(text="Generate Password", width=20, font=("Arial", 14, "bold"), command=fill_and_copy_password)
 gen_pass_button.grid(column=2, row=4, sticky=tkinter.W, pady=10)
 
 add_pass_button = tkinter.Button(text="add", width=62, font=("Arial", 14, "bold"), command=store_data)
