@@ -9,8 +9,6 @@ data = []
 if os.path.exists(FILE_NAME):
     with open(FILE_NAME, "r") as file:
         data = json.load(file)
-else:
-    data = []
 
 
 def store_data():
