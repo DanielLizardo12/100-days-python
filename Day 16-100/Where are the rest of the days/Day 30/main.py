@@ -12,5 +12,13 @@ else:
     content = file.read()
     print(content)
 finally:
-    file.close()
-    print("file closed")
+    #raise KeyError("this is an error i created")
+    print("finally")
+
+heigth = float(input("Height in metres: "))
+weight = float(input("Weight in pounds: "))
+
+if heigth > 3:
+    raise ValueError("Height is greater than 3")
+
+bmi = weight / (heigth * heigth)
