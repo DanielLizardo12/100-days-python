@@ -20,5 +20,6 @@ weight = float(input("Weight in pounds: "))
 
 if heigth > 3:
     raise ValueError("Height is greater than 3")
+raise I
 
 bmi = weight / (heigth * heigth)
